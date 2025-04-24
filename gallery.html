@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - BilahnIRS</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">BilahnIRS</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html" class="cta-button">Contact Us</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Gallery Hero -->
+    <section class="page-hero gallery-hero">
+        <div class="hero-content">
+            <h1>Our Gallery</h1>
+            <p>Discover Our Training Programs in Action</p>
+        </div>
+    </section>
+
+    <!-- Gallery Grid -->
+    <section class="gallery-page">
+        <div class="container">
+            <div class="gallery-filter">
+                <button class="filter-btn active" data-category="all">All Photos</button>
+                <button class="filter-btn" data-category="training">Training</button>
+                <button class="filter-btn" data-category="events">Events</button>
+                <button class="filter-btn" data-category="facilities">Facilities</button>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item" data-category="training">
+                    <img src="images/gallery/defensive-driving-1.jpg" alt="Defensive Driving Training">
+                    <div class="gallery-overlay">
+                        <h3>Defensive Driving Course</h3>
+                        <p>Professional training in action</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="training">
+                    <img src="images/gallery/heavy-vehicle-1.jpg" alt="Heavy Vehicle Training">
+                    <div class="gallery-overlay">
+                        <h3>Heavy Vehicle Operation</h3>
+                        <p>Specialized equipment training</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="facilities">
+                    <img src="images/gallery/training-facility-1.jpg" alt="Training Facility">
+                    <div class="gallery-overlay">
+                        <h3>Modern Training Facility</h3>
+                        <p>State-of-the-art equipment</p>
+                    </div>
+                </div>
+                <!-- More gallery items will be added -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>BilahnIRS</h3>
+                    <p>Committed to creating safer roads through professional driver training and education.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Newsletter</h3>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your Email">
+                        <button type="submit" class="cta-button">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 BilahnIRS. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
