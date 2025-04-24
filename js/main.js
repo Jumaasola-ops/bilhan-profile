@@ -1,8 +1,23 @@
 // Service Data
 const services = [
     {
+        title: "Behavioral Defensive Driver Training",
+        image: "images/hero/Best Driving Courses in Calgary.jpeg",
+        description: "Our AGEID International specialized training program focuses on enhancing drivers' awareness and response to potential hazards on the road, ensuring safer driving outcomes.",
+        duration: "40 hr",
+        price: "Contact for Quote",
+        category: "Road Safety",
+        details: [
+            "Hazard Awareness Training",
+            "Defensive Driving Techniques",
+            "Risk Assessment Skills",
+            "Emergency Response Training",
+            "Practical Road Skills"
+        ]
+    },
+    {
         title: "OHSE Training & ISO Certification",
-        image: "images/services/iso-certification.jpg",
+        image: "images/hero/Cost Of Iso Certification _ Uaeiso_com.jpeg",
         description: "Comprehensive workplace training programs including ISO 14001, 9001, and 45001 certification. We ensure compliance and help build a strong safety culture in your organization.",
         duration: "40 hr",
         price: "Contact for Quote",
@@ -17,7 +32,7 @@ const services = [
     },
     {
         title: "Environmental & Social Impact Assessment",
-        image: "images/services/environmental-assessment.jpg",
+        image: "images/hero/environmental.jpeg",
         description: "Expert ESIA services and compliance audits for evaluating environmental and social risks across industries, with specialized focus on mining operations and industrial projects.",
         duration: "4-8 weeks",
         price: "Contact for Quote",
@@ -32,7 +47,7 @@ const services = [
     },
     {
         title: "OHSE Compliance & Strategy",
-        image: "images/services/ohse-compliance.jpg",
+        image: "images/hero/Regulatory Compliance and Advisory ease your….jpeg",
         description: "Comprehensive OHSE regulatory compliance through detailed audits, strategic planning, and effective policy development for safer work environments.",
         duration: "2-4 weeks",
         price: "Contact for Quote",
@@ -47,7 +62,7 @@ const services = [
     },
     {
         title: "Legal Standards & Compliance",
-        image: "images/services/legal-compliance.jpg",
+        image: "images/hero/LEGAL compliance.jpeg",
         description: "Development of robust regulatory frameworks, comprehensive legal audits, and compliance gap analysis to enhance workplace safety and environmental standards.",
         duration: "2-3 weeks",
         price: "Contact for Quote",
@@ -62,7 +77,7 @@ const services = [
     },
     {
         title: "Behavioral Safety Change Management",
-        image: "images/services/behavioral-safety.jpg",
+        image: "images/hero/Behavioral Safety Change Management.jpeg",
         description: "Implementation of behavior-based safety programs to improve workplace compliance and risk management through cultural transformation and employee engagement.",
         duration: "12-16 weeks",
         price: "Contact for Quote",
@@ -77,7 +92,7 @@ const services = [
     },
     {
         title: "Climate & Environmental Consultancy",
-        image: "images/services/climate-consultancy.jpg",
+        image: "images/hero/environmental.jpeg",
         description: "Expert guidance on sustainability practices, climate resilience strategies, and environmental best practices for organizations committed to environmental responsibility.",
         duration: "Ongoing",
         price: "Contact for Quote",
@@ -92,7 +107,7 @@ const services = [
     },
     {
         title: "ISO Systems Audit & Procedures",
-        image: "images/services/iso-audit.jpg",
+        image: "images/hero/ISO Systems Audit & Procedures.jpeg",
         description: "Professional ISO compliance audits and development of structured workplace procedures for improved operational efficiency and safety compliance.",
         duration: "2-3 weeks",
         price: "Contact for Quote",
@@ -107,7 +122,7 @@ const services = [
     },
     {
         title: "Mining Operations Safety",
-        image: "images/services/mining-safety.jpg",
+        image: "images/hero/Mining Operations Safety.jpeg",
         description: "Implementation of comprehensive health, safety, and environmental best practices in mine sites, including safety programs and compliance audits.",
         duration: "Ongoing",
         price: "Contact for Quote",
@@ -122,7 +137,7 @@ const services = [
     },
     {
         title: "Mine Planning & Rehabilitation",
-        image: "images/services/mine-rehab.jpg",
+        image: "images/hero/Mine Planning & Rehabilitation.jpeg",
         description: "Development of sustainable mine planning strategies and comprehensive rehabilitation plans for effective post-mining site management and ecological restoration.",
         duration: "3-6 months",
         price: "Contact for Quote",
@@ -137,7 +152,7 @@ const services = [
     },
     {
         title: "Safety Curriculum Development",
-        image: "images/services/curriculum-dev.jpg",
+        image: "images/hero/Safety Curriculum Development.jpeg",
         description: "Design of comprehensive OHS and road safety training programs, emphasizing life-saving measures, accident prevention, and professional development.",
         duration: "4-6 weeks",
         price: "Contact for Quote",
@@ -152,7 +167,6 @@ const services = [
     }
 ];
 
-// Booking Modal Functionality
 function createBookingModal() {
     const modalHTML = `
         <div class="modal-overlay" id="bookingModal">
@@ -161,7 +175,7 @@ function createBookingModal() {
                 <h2>Book Training Session</h2>
                 <div class="modal-content">
                     <form id="bookingForm" class="booking-form">
-                        <input type="hidden" id="courseTitle" name="courseTitle">
+                        <input type="hidden" id="serviceTitle" name="serviceTitle">
                         <div class="form-group">
                             <input type="text" name="name" placeholder="Your Full Name" required>
                         </div>
@@ -206,8 +220,8 @@ function initializeBookingSystem() {
         if (e.target && e.target.classList.contains('book-button')) {
             const card = e.target.closest('.service-card');
             if (card) {
-                const courseTitle = card.querySelector('h3').textContent;
-                document.getElementById('courseTitle').value = courseTitle;
+                const serviceTitle = card.querySelector('h3').textContent;
+                document.getElementById('serviceTitle').value = serviceTitle;
                 openModal();
             }
         }
@@ -229,7 +243,7 @@ function initializeBookingSystem() {
 
         // Format message for WhatsApp
         const whatsappMessage = `*New Training Booking Request*
-Course: ${bookingData.courseTitle}
+Service: ${bookingData.serviceTitle}
 Name: ${bookingData.name}
 Email: ${bookingData.email}
 Phone: ${bookingData.phone}
@@ -241,7 +255,7 @@ Message: ${bookingData.message}`;
         window.open(whatsappUrl, '_blank');
 
         // Send confirmation email
-        const mailtoUrl = `mailto:brokasoja@gmail.com?subject=Training Booking - ${bookingData.courseTitle}&body=${encodeURIComponent(whatsappMessage)}`;
+        const mailtoUrl = `mailto:brokasoja@gmail.com?subject=Training Booking - ${bookingData.serviceTitle}&body=${encodeURIComponent(whatsappMessage)}`;
         window.location.href = mailtoUrl;
 
         // Close modal and show success message
