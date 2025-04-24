@@ -238,14 +238,130 @@ function generateNextAvailableDates(count) {
     return dates;
 }
 
-// Update service card template to include booking button
+// Lazy Loading Implementation
+function lazyLoadImages() {
+    const images = document.querySelectorAll('img[data-src]');
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.classList.add('lazy-image');
+                
+                img.onload = () => {
+                    img.classList.add('loaded');
+                    observer.unobserve(img);
+                };
+            }
+        });
+    }, {
+        rootMargin: '50px 0px',
+        threshold: 0.1
+    });
+
+    images.forEach(img => imageObserver.observe(img));
+}
+
+// Touch Gestures for Gallery
+function initGallerySwipe() {
+    const gallery = document.querySelector('.gallery-grid');
+    if (!gallery) return;
+
+    let touchStartX = 0;
+    let touchEndX = 0;
+    let currentIndex = 0;
+    const items = gallery.querySelectorAll('.gallery-item');
+    
+    gallery.addEventListener('touchstart', e => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    gallery.addEventListener('touchend', e => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    }, { passive: true });
+
+    function handleSwipe() {
+        const swipeThreshold = 50;
+        const diff = touchStartX - touchEndX;
+
+        if (Math.abs(diff) > swipeThreshold) {
+            if (diff > 0 && currentIndex < items.length - 1) {
+                // Swipe left
+                currentIndex++;
+            } else if (diff < 0 && currentIndex > 0) {
+                // Swipe right
+                currentIndex--;
+            }
+            scrollToItem(currentIndex);
+        }
+    }
+
+    function scrollToItem(index) {
+        items[index].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+    }
+}
+
+// Performance Optimizations
+function optimizePerformance() {
+    // Debounce scroll handler
+    let scrollTimeout;
+    window.addEventListener('scroll', () => {
+        if (scrollTimeout) {
+            window.cancelAnimationFrame(scrollTimeout);
+        }
+        scrollTimeout = window.requestAnimationFrame(() => {
+            const currentScroll = window.pageYOffset;
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                header.style.transform = 'translateY(-100%)';
+            } else {
+                header.style.transform = 'translateY(0)';
+            }
+            lastScroll = currentScroll;
+        });
+    }, { passive: true });
+
+    // Optimize animations for reduced motion preference
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.documentElement.style.scrollBehavior = 'auto';
+    }
+}
+
+// Loading States for Dynamic Content
+function showLoading(element) {
+    const spinner = document.createElement('div');
+    spinner.className = 'loading-spinner';
+    element.appendChild(spinner);
+}
+
+function hideLoading(element) {
+    const spinner = element.querySelector('.loading-spinner');
+    if (spinner) spinner.remove();
+}
+
+// Enhanced Service Card Population
 function populateServices() {
     const servicesGrid = document.querySelector('.services-grid');
+    if (!servicesGrid) return;
+
+    showLoading(servicesGrid);
+
+    const fragment = document.createDocumentFragment();
     services.forEach(service => {
         const serviceCard = document.createElement('div');
         serviceCard.className = 'service-card';
+        
+        // Create image placeholder
+        const imgPlaceholder = document.createElement('div');
+        imgPlaceholder.className = 'image-placeholder';
+        
+        const img = document.createElement('img');
+        img.dataset.src = service.image;
+        img.alt = service.title;
+        imgPlaceholder.appendChild(img);
+
         serviceCard.innerHTML = `
-            <img src="${service.image}" alt="${service.title}">
+            ${imgPlaceholder.outerHTML}
             <div class="service-category">${service.category}</div>
             <h3>${service.title}</h3>
             <p>${service.description}</p>
@@ -260,8 +376,13 @@ function populateServices() {
             </ul>
             <button class="cta-button book-button">Book Now</button>
         `;
-        servicesGrid.appendChild(serviceCard);
+        fragment.appendChild(serviceCard);
     });
+
+    servicesGrid.innerHTML = '';
+    servicesGrid.appendChild(fragment);
+    hideLoading(servicesGrid);
+    lazyLoadImages();
 }
 
 // Initialize everything when DOM is loaded
@@ -278,6 +399,18 @@ document.addEventListener('DOMContentLoaded', () => {
             const category = button.getAttribute('data-category');
             filterServices(category);
         });
+    });
+
+    lazyLoadImages();
+    initGallerySwipe();
+    optimizePerformance();
+    
+    // Initialize loading states for dynamic content
+    const dynamicSections = document.querySelectorAll('.services-grid, .gallery-grid');
+    dynamicSections.forEach(section => {
+        if (section.children.length === 0) {
+            showLoading(section);
+        }
     });
 });
 
@@ -305,20 +438,32 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
     this.reset();
 });
 
-// Handle Newsletter Subscription
-document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const email = this.querySelector('input[type="email"]').value;
-    alert('Thank you for subscribing to our newsletter!');
-    this.reset();
-});
-
-// Mobile Menu Toggle
+// Mobile Menu Functionality
 const mobileMenuBtn = document.querySelector('.mobile-menu');
 const navLinks = document.querySelector('.nav-links');
 
 mobileMenuBtn.addEventListener('click', () => {
-    navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+    navLinks.classList.toggle('active');
+    // Prevent body scroll when menu is open
+    document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : 'auto';
+});
+
+// Close mobile menu when clicking outside
+document.addEventListener('click', (e) => {
+    if (navLinks.classList.contains('active') && 
+        !e.target.closest('.nav-links') && 
+        !e.target.closest('.mobile-menu')) {
+        navLinks.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+});
+
+// Close mobile menu when clicking a link
+navLinks.addEventListener('click', (e) => {
+    if (e.target.tagName === 'A') {
+        navLinks.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
 });
 
 // Smooth Scrolling
