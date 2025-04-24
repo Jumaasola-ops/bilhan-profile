@@ -469,6 +469,77 @@ body {
     border-color: var(--gold-primary);
 }
 
+/* Key Areas Section */
+.key-areas {
+    padding: 80px 0;
+    background: #f8f9fa;
+}
+
+.key-areas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.key-area-card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.key-area-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+}
+
+.key-area-card i {
+    font-size: 2.5rem;
+    color: var(--gold-primary);
+    margin-bottom: 20px;
+}
+
+.key-area-card h3 {
+    color: var(--dark);
+    margin-bottom: 15px;
+    font-size: 1.25rem;
+}
+
+.key-area-card p {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .key-areas-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        padding: 0 15px;
+    }
+
+    .key-area-card {
+        padding: 25px;
+    }
+
+    .key-area-card i {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .key-areas {
+        padding: 60px 0;
+    }
+
+    .key-area-card {
+        padding: 20px;
+    }
+}
+
 /* Page Heroes */
 .page-hero {
     height: 50vh;

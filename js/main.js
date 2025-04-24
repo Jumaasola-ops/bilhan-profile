@@ -2,93 +2,153 @@
 const services = [
     {
         title: "OHSE Training & ISO Certification",
-        image: "images/certification.jpg",
-        description: "Comprehensive workplace training program covering ISO 14001, ISO 9001, and ISO 45001 certification, ensuring compliance with international standards.",
-        duration: "8 hr",
-        price: "$.00",
+        image: "images/services/iso-certification.jpg",
+        description: "Comprehensive workplace training programs including ISO 14001, 9001, and 45001 certification. We ensure compliance and help build a strong safety culture in your organization.",
+        duration: "40 hr",
+        price: "Contact for Quote",
         category: "Certification",
-        details: ["ISO 14001 Implementation", "ISO 9001 Quality Management", "ISO 45001 Safety Standards", "Compliance Training"]
+        details: [
+            "ISO 14001 Environmental Management",
+            "ISO 9001 Quality Management",
+            "ISO 45001 Safety Standards",
+            "Safety Culture Development",
+            "Compliance Training"
+        ]
     },
     {
         title: "Environmental & Social Impact Assessment",
-        image: "images/environmental.jpg",
-        description: "Expert ESIA services and compliance audits for evaluating environmental and social risks across industries, with special focus on mining operations.",
-        duration: "16 hr",
-        price: "$.00",
+        image: "images/services/environmental-assessment.jpg",
+        description: "Expert ESIA services and compliance audits for evaluating environmental and social risks across industries, with specialized focus on mining operations and industrial projects.",
+        duration: "4-8 weeks",
+        price: "Contact for Quote",
         category: "Environmental",
-        details: ["Impact Assessment", "Risk Evaluation", "Compliance Audits", "Mining Sector Expertise"]
+        details: [
+            "Environmental Impact Assessment",
+            "Social Risk Evaluation",
+            "Mining Sector Expertise",
+            "Industrial Compliance Audits",
+            "Stakeholder Engagement"
+        ]
     },
     {
         title: "OHSE Compliance & Strategy",
-        image: "images/compliance.jpg",
-        description: "Comprehensive OHSE regulatory compliance through audits, strategy design, and effective policy development for safer work environments.",
-        duration: "6 hr",
-        price: "$.00",
+        image: "images/services/ohse-compliance.jpg",
+        description: "Comprehensive OHSE regulatory compliance through detailed audits, strategic planning, and effective policy development for safer work environments.",
+        duration: "2-4 weeks",
+        price: "Contact for Quote",
         category: "Compliance",
-        details: ["Regulatory Compliance", "Strategy Design", "Policy Development", "Safety Audits"]
+        details: [
+            "Regulatory Compliance Audits",
+            "Strategy Development",
+            "Policy Implementation",
+            "Risk Assessment",
+            "Safety Management Systems"
+        ]
     },
     {
         title: "Legal Standards & Compliance",
-        image: "images/legal.jpg",
-        description: "Development of regulatory frameworks, legal audits, and compliance gap analysis for enhanced workplace safety and environmental standards.",
-        duration: "7 hr",
-        price: "$.00",
+        image: "images/services/legal-compliance.jpg",
+        description: "Development of robust regulatory frameworks, comprehensive legal audits, and compliance gap analysis to enhance workplace safety and environmental standards.",
+        duration: "2-3 weeks",
+        price: "Contact for Quote",
         category: "Legal",
-        details: ["Regulatory Framework", "Legal Audits", "Gap Analysis", "Standards Development"]
+        details: [
+            "Regulatory Framework Development",
+            "Legal Compliance Audits",
+            "Gap Analysis",
+            "Standards Implementation",
+            "Compliance Monitoring"
+        ]
     },
     {
         title: "Behavioral Safety Change Management",
-        image: "images/safety.jpg",
-        description: "Implementation of behavior-based safety programs to improve workplace compliance and risk management through cultural transformation.",
-        duration: "5 hr",
-        price: "$.00",
+        image: "images/services/behavioral-safety.jpg",
+        description: "Implementation of behavior-based safety programs to improve workplace compliance and risk management through cultural transformation and employee engagement.",
+        duration: "12-16 weeks",
+        price: "Contact for Quote",
         category: "Safety",
-        details: ["Behavior Analysis", "Risk Management", "Safety Culture", "Compliance Programs"]
+        details: [
+            "Behavior Analysis",
+            "Cultural Transformation",
+            "Risk Management",
+            "Employee Engagement",
+            "Performance Monitoring"
+        ]
     },
     {
         title: "Climate & Environmental Consultancy",
-        image: "images/climate.jpg",
-        description: "Expert guidance on sustainability practices, climate resilience strategies, and environmental best practices for organizations.",
-        duration: "8 hr",
-        price: "$.00",
+        image: "images/services/climate-consultancy.jpg",
+        description: "Expert guidance on sustainability practices, climate resilience strategies, and environmental best practices for organizations committed to environmental responsibility.",
+        duration: "Ongoing",
+        price: "Contact for Quote",
         category: "Environmental",
-        details: ["Sustainability Planning", "Climate Resilience", "Environmental Practice", "Strategic Guidance"]
+        details: [
+            "Sustainability Planning",
+            "Climate Resilience Strategies",
+            "Environmental Best Practices",
+            "Carbon Footprint Analysis",
+            "Environmental Management"
+        ]
     },
     {
         title: "ISO Systems Audit & Procedures",
-        image: "images/iso-audit.jpg",
-        description: "Professional ISO compliance audits and development of structured workplace procedures for improved operational efficiency.",
-        duration: "8 hr",
-        price: "$.00",
+        image: "images/services/iso-audit.jpg",
+        description: "Professional ISO compliance audits and development of structured workplace procedures for improved operational efficiency and safety compliance.",
+        duration: "2-3 weeks",
+        price: "Contact for Quote",
         category: "Certification",
-        details: ["ISO Compliance", "Procedure Development", "Efficiency Optimization", "Quality Assurance"]
+        details: [
+            "ISO Compliance Audits",
+            "Procedure Development",
+            "Efficiency Optimization",
+            "Quality Assurance",
+            "Documentation Systems"
+        ]
     },
     {
         title: "Mining Operations Safety",
-        image: "images/mining-safety.jpg",
-        description: "Implementation of health, safety, and environmental best practices in mine sites, including comprehensive safety programs.",
-        duration: "10 hr",
-        price: "$.00",
+        image: "images/services/mining-safety.jpg",
+        description: "Implementation of comprehensive health, safety, and environmental best practices in mine sites, including safety programs and compliance audits.",
+        duration: "Ongoing",
+        price: "Contact for Quote",
         category: "Mining",
-        details: ["Site Safety", "Risk Assessment", "Training Programs", "Compliance Audits"]
+        details: [
+            "Mine Site Safety",
+            "Risk Assessment",
+            "Training Programs",
+            "Compliance Audits",
+            "Emergency Procedures"
+        ]
     },
     {
         title: "Mine Planning & Rehabilitation",
-        image: "images/mine-rehab.jpg",
-        description: "Development of sustainable mine planning strategies and rehabilitation plans for effective post-mining site management.",
-        duration: "9 hr",
-        price: "$.00",
+        image: "images/services/mine-rehab.jpg",
+        description: "Development of sustainable mine planning strategies and comprehensive rehabilitation plans for effective post-mining site management and ecological restoration.",
+        duration: "3-6 months",
+        price: "Contact for Quote",
         category: "Mining",
-        details: ["Sustainable Planning", "Site Rehabilitation", "Ecological Restoration", "Post-Mining Management"]
+        details: [
+            "Sustainable Planning",
+            "Site Rehabilitation",
+            "Ecological Restoration",
+            "Post-Mining Management",
+            "Environmental Monitoring"
+        ]
     },
     {
-        title: "Road Safety Curriculum Development",
-        image: "images/road-safety.jpg",
-        description: "Design of comprehensive OHS programs focused on workplace and road safety, emphasizing accident prevention.",
-        duration: "6 hr",
-        price: "$.00",
+        title: "Safety Curriculum Development",
+        image: "images/services/curriculum-dev.jpg",
+        description: "Design of comprehensive OHS and road safety training programs, emphasizing life-saving measures, accident prevention, and professional development.",
+        duration: "4-6 weeks",
+        price: "Contact for Quote",
         category: "Road Safety",
-        details: ["Curriculum Design", "Accident Prevention", "Safety Measures", "Professional Training"]
+        details: [
+            "OHS Program Design",
+            "Road Safety Training",
+            "Accident Prevention",
+            "Professional Development",
+            "Training Materials"
+        ]
     }
 ];
 
