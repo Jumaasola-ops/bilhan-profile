@@ -209,13 +209,11 @@ function createBookingModal() {
     document.body.insertAdjacentHTML('beforeend', modalHTML);
 }
 
-// Initialize Booking System
 function initializeBookingSystem() {
     createBookingModal();
     const modal = document.getElementById('bookingModal');
     const closeBtn = modal.querySelector('.modal-close');
-    
-    // Handle booking button clicks
+
     document.addEventListener('click', function(e) {
         if (e.target && e.target.classList.contains('book-button')) {
             const card = e.target.closest('.service-card');
@@ -227,7 +225,6 @@ function initializeBookingSystem() {
         }
     });
 
-    // Close modal when clicking close button or outside
     closeBtn.addEventListener('click', closeModal);
     modal.addEventListener('click', function(e) {
         if (e.target === modal) {
@@ -255,7 +252,7 @@ Message: ${bookingData.message}`;
         window.open(whatsappUrl, '_blank');
 
         // Send confirmation email
-        const mailtoUrl = `mailto:brokasoja@gmail.com?subject=Training Booking - ${bookingData.serviceTitle}&body=${encodeURIComponent(whatsappMessage)}`;
+        const mailtoUrl = `mailto:bilhanirs@gmail.com?subject=Training Booking - ${bookingData.serviceTitle}&body=${encodeURIComponent(whatsappMessage)}`;
         window.location.href = mailtoUrl;
 
         // Close modal and show success message
@@ -280,7 +277,7 @@ function closeModal() {
 
 function populateAvailableDates() {
     const datesContainer = document.querySelector('.available-dates');
-    const dates = generateNextAvailableDates(5); // Generate next 5 available dates
+    const dates = generateNextAvailableDates(5); 
     
     datesContainer.innerHTML = '<h4>Available Dates</h4>';
     dates.forEach(date => {
