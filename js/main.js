@@ -1,10 +1,12 @@
+const { title } = require("process");
+
 // Service Data
 const services = [
     {
         title: "Behavioral Defensive Driver Training",
         image: "images/hero/Best Driving Courses in Calgary.jpeg",
         description: "Our AGEID International specialized training program focuses on enhancing drivers' awareness and response to potential hazards on the road, ensuring safer driving outcomes.",
-        duration: "40 hr",
+
         price: "Contact for Quote",
         category: "Road Safety",
         details: [
@@ -16,10 +18,25 @@ const services = [
         ]
     },
     {
+        title: "Toolbox Talks & Safety Meetings",
+        image: "images/hero/Toolbox Talks & Safety Meetings.jpeg",
+        description: "Engaging and informative toolbox talks and safety meetings designed to enhance workplace safety culture and compliance through interactive discussions and training sessions.",
+        price: "Contact for Quote",
+        category: "Safety",
+        details: [
+            "Interactive Safety Discussions",
+            "Compliance Training",
+            "Workplace Safety Culture",
+            "Incident Prevention Strategies",
+            "Employee Engagement"
+        ]
+    },
+
+    {
         title: "OHSE Training & ISO Certification",
         image: "images/hero/Cost Of Iso Certification _ Uaeiso_com.jpeg",
         description: "Comprehensive workplace training programs including ISO 14001, 9001, and 45001 certification. We ensure compliance and help build a strong safety culture in your organization.",
-        duration: "40 hr",
+   
         price: "Contact for Quote",
         category: "Certification",
         details: [
@@ -34,7 +51,7 @@ const services = [
         title: "Environmental & Social Impact Assessment",
         image: "images/hero/environmental.jpeg",
         description: "Expert ESIA services and compliance audits for evaluating environmental and social risks across industries, with specialized focus on mining operations and industrial projects.",
-        duration: "4-8 weeks",
+
         price: "Contact for Quote",
         category: "Environmental",
         details: [
@@ -49,7 +66,7 @@ const services = [
         title: "OHSE Compliance & Strategy",
         image: "images/hero/Regulatory Compliance and Advisory ease your….jpeg",
         description: "Comprehensive OHSE regulatory compliance through detailed audits, strategic planning, and effective policy development for safer work environments.",
-        duration: "2-4 weeks",
+
         price: "Contact for Quote",
         category: "Compliance",
         details: [
@@ -64,7 +81,7 @@ const services = [
         title: "Legal Standards & Compliance",
         image: "images/hero/LEGAL compliance.jpeg",
         description: "Development of robust regulatory frameworks, comprehensive legal audits, and compliance gap analysis to enhance workplace safety and environmental standards.",
-        duration: "2-3 weeks",
+
         price: "Contact for Quote",
         category: "Legal",
         details: [
@@ -79,7 +96,7 @@ const services = [
         title: "Behavioral Safety Change Management",
         image: "images/hero/Behavioral Safety Change Management.jpeg",
         description: "Implementation of behavior-based safety programs to improve workplace compliance and risk management through cultural transformation and employee engagement.",
-        duration: "12-16 weeks",
+ 
         price: "Contact for Quote",
         category: "Safety",
         details: [
@@ -94,7 +111,7 @@ const services = [
         title: "Climate & Environmental Consultancy",
         image: "images/hero/environmental.jpeg",
         description: "Expert guidance on sustainability practices, climate resilience strategies, and environmental best practices for organizations committed to environmental responsibility.",
-        duration: "Ongoing",
+
         price: "Contact for Quote",
         category: "Environmental",
         details: [
@@ -109,7 +126,7 @@ const services = [
         title: "ISO Systems Audit & Procedures",
         image: "images/hero/ISO Systems Audit & Procedures.jpeg",
         description: "Professional ISO compliance audits and development of structured workplace procedures for improved operational efficiency and safety compliance.",
-        duration: "2-3 weeks",
+   
         price: "Contact for Quote",
         category: "Certification",
         details: [
@@ -124,7 +141,7 @@ const services = [
         title: "Mining Operations Safety",
         image: "images/hero/Mining Operations Safety.jpeg",
         description: "Implementation of comprehensive health, safety, and environmental best practices in mine sites, including safety programs and compliance audits.",
-        duration: "Ongoing",
+
         price: "Contact for Quote",
         category: "Mining",
         details: [
@@ -139,7 +156,7 @@ const services = [
         title: "Mine Planning & Rehabilitation",
         image: "images/hero/Mine Planning & Rehabilitation.jpeg",
         description: "Development of sustainable mine planning strategies and comprehensive rehabilitation plans for effective post-mining site management and ecological restoration.",
-        duration: "3-6 months",
+ 
         price: "Contact for Quote",
         category: "Mining",
         details: [
@@ -154,7 +171,6 @@ const services = [
         title: "Safety Curriculum Development",
         image: "images/hero/Safety Curriculum Development.jpeg",
         description: "Design of comprehensive OHS and road safety training programs, emphasizing life-saving measures, accident prevention, and professional development.",
-        duration: "4-6 weeks",
         price: "Contact for Quote",
         category: "Road Safety",
         details: [
@@ -309,7 +325,6 @@ function generateNextAvailableDates(count) {
     return dates;
 }
 
-// Lazy Loading Implementation
 function lazyLoadImages() {
     const images = document.querySelectorAll('img[data-src]');
     const imageObserver = new IntersectionObserver((entries, observer) => {
@@ -373,8 +388,14 @@ function initGallerySwipe() {
     }
 }
 
+// Global variables
+let lastScroll = 0;
+const header = document.querySelector('.header');
+
 // Performance Optimizations
 function optimizePerformance() {
+    if (!header) return;
+    
     // Debounce scroll handler
     let scrollTimeout;
     window.addEventListener('scroll', () => {
@@ -422,17 +443,15 @@ function populateServices() {
         const serviceCard = document.createElement('div');
         serviceCard.className = 'service-card';
         
-        // Create image placeholder
-        const imgPlaceholder = document.createElement('div');
-        imgPlaceholder.className = 'image-placeholder';
-        
-        const img = document.createElement('img');
-        img.dataset.src = service.image;
+        const img = new Image();
+        img.src = service.image; // Set src directly instead of data-src
         img.alt = service.title;
-        imgPlaceholder.appendChild(img);
-
+        img.className = 'service-image';
+        
         serviceCard.innerHTML = `
-            ${imgPlaceholder.outerHTML}
+            <div class="image-placeholder">
+                ${img.outerHTML}
+            </div>
             <div class="service-category">${service.category}</div>
             <h3>${service.title}</h3>
             <p>${service.description}</p>
@@ -453,7 +472,6 @@ function populateServices() {
     servicesGrid.innerHTML = '';
     servicesGrid.appendChild(fragment);
     hideLoading(servicesGrid);
-    lazyLoadImages();
 }
 
 // Initialize everything when DOM is loaded
@@ -486,97 +504,51 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Handle Contact Form Submission
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const name = this.querySelector('input[type="text"]').value;
-    const email = this.querySelector('input[type="email"]').value;
-    const phone = this.querySelector('input[type="tel"]').value;
-    const message = this.querySelector('textarea').value;
-    
-    // Format message for WhatsApp
-    const whatsappMessage = `Hello! I'm interested in BilahnIRS services.\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\n\nMessage: ${message}`;
-    const whatsappUrl = `https://wa.me/254720930217?text=${encodeURIComponent(whatsappMessage)}`;
-    
-    // Open WhatsApp
-    window.open(whatsappUrl, '_blank');
-    
-    // Send email using mailto
-    const mailtoUrl = `mailto:brokasoja@gmail.com?subject=BilahnIRS%20Inquiry&body=${encodeURIComponent(whatsappMessage)}`;
-    window.location.href = mailtoUrl;
-    
-    // Reset form
-    this.reset();
-});
-
-// Mobile Menu Functionality
-const mobileMenuBtn = document.querySelector('.mobile-menu');
-const navLinks = document.querySelector('.nav-links');
-
-mobileMenuBtn.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    // Prevent body scroll when menu is open
-    document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : 'auto';
-});
-
-// Close mobile menu when clicking outside
-document.addEventListener('click', (e) => {
-    if (navLinks.classList.contains('active') && 
-        !e.target.closest('.nav-links') && 
-        !e.target.closest('.mobile-menu')) {
-        navLinks.classList.remove('active');
-        document.body.style.overflow = 'auto';
+document.addEventListener('DOMContentLoaded', () => {
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = this.querySelector('input[type="text"]').value;
+            const email = this.querySelector('input[type="email"]').value;
+            const phone = this.querySelector('input[type="tel"]').value;
+            const message = this.querySelector('textarea').value;
+            
+            // Format message for WhatsApp
+            const whatsappMessage = `Hello! I'm interested in BilahnIRS services.\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\n\nMessage: ${message}`;
+            const whatsappUrl = `https://wa.me/254720930217?text=${encodeURIComponent(whatsappMessage)}`;
+            
+            window.open(whatsappUrl, '_blank');
+            
+            const mailtoUrl = `mailto:brokasoja@gmail.com?subject=BilahnIRS%20Inquiry&body=${encodeURIComponent(whatsappMessage)}`;
+            window.location.href = mailtoUrl;
+            
+            this.reset();
+        });
     }
 });
 
-// Close mobile menu when clicking a link
-navLinks.addEventListener('click', (e) => {
-    if (e.target.tagName === 'A') {
-        navLinks.classList.remove('active');
-        document.body.style.overflow = 'auto';
-    }
-});
-
-// Smooth Scrolling
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth'
-            });
-            // Close mobile menu if open
-            if (window.innerWidth <= 768) {
-                navLinks.style.display = 'none';
-            }
+if (header) {
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        
+        if (currentScroll > lastScroll && currentScroll > 100) {
+            header.style.transform = 'translateY(-100%)';
+        } else {
+            header.style.transform = 'translateY(0)';
         }
+        
+        if (currentScroll === 0) {
+            header.style.background = 'rgba(255, 255, 255, 0.95)';
+        } else {
+            header.style.background = '#ffffff';
+        }
+        
+        lastScroll = currentScroll;
     });
-});
+}
 
-// Header Scroll Effect
-const header = document.querySelector('.header');
-let lastScroll = 0;
-
-window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-    
-    if (currentScroll > lastScroll && currentScroll > 100) {
-        header.style.transform = 'translateY(-100%)';
-    } else {
-        header.style.transform = 'translateY(0)';
-    }
-    
-    if (currentScroll === 0) {
-        header.style.background = 'rgba(255, 255, 255, 0.95)';
-    } else {
-        header.style.background = '#ffffff';
-    }
-    
-    lastScroll = currentScroll;
-});
-
-// Category Filter Functionality
 function filterServices(category) {
     const serviceCards = document.querySelectorAll('.service-card');
     serviceCards.forEach(card => {
