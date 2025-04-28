@@ -1,12 +1,10 @@
-const { title } = require("process");
-
 // Service Data
 const services = [
     {
         title: "Behavioral Defensive Driver Training",
         image: "images/hero/Best Driving Courses in Calgary.jpeg",
         description: "Our AGEID International specialized training program focuses on enhancing drivers' awareness and response to potential hazards on the road, ensuring safer driving outcomes.",
-
+        duration: "Unlimited",
         price: "Contact for Quote",
         category: "Road Safety",
         details: [
@@ -19,8 +17,9 @@ const services = [
     },
     {
         title: "Toolbox Talks & Safety Meetings",
-        image: "images/hero/Toolbox Talks & Safety Meetings.jpeg",
+        image: "images/hero/Safety Curriculum Development.jpeg",
         description: "Engaging and informative toolbox talks and safety meetings designed to enhance workplace safety culture and compliance through interactive discussions and training sessions.",
+        duration: "Unlimited",
         price: "Contact for Quote",
         category: "Safety",
         details: [
@@ -36,7 +35,7 @@ const services = [
         title: "OHSE Training & ISO Certification",
         image: "images/hero/Cost Of Iso Certification _ Uaeiso_com.jpeg",
         description: "Comprehensive workplace training programs including ISO 14001, 9001, and 45001 certification. We ensure compliance and help build a strong safety culture in your organization.",
-   
+        duration: "Unlimited",
         price: "Contact for Quote",
         category: "Certification",
         details: [
@@ -51,7 +50,7 @@ const services = [
         title: "Environmental & Social Impact Assessment",
         image: "images/hero/environmental.jpeg",
         description: "Expert ESIA services and compliance audits for evaluating environmental and social risks across industries, with specialized focus on mining operations and industrial projects.",
-
+        duration: "Unlimited",
         price: "Contact for Quote",
         category: "Environmental",
         details: [
@@ -66,7 +65,7 @@ const services = [
         title: "OHSE Compliance & Strategy",
         image: "images/hero/Regulatory Compliance and Advisory ease your….jpeg",
         description: "Comprehensive OHSE regulatory compliance through detailed audits, strategic planning, and effective policy development for safer work environments.",
-
+        duration: "Unlimited",
         price: "Contact for Quote",
         category: "Compliance",
         details: [
@@ -81,7 +80,7 @@ const services = [
         title: "Legal Standards & Compliance",
         image: "images/hero/LEGAL compliance.jpeg",
         description: "Development of robust regulatory frameworks, comprehensive legal audits, and compliance gap analysis to enhance workplace safety and environmental standards.",
-
+        duration: "Unlimited",
         price: "Contact for Quote",
         category: "Legal",
         details: [
@@ -96,7 +95,7 @@ const services = [
         title: "Behavioral Safety Change Management",
         image: "images/hero/Behavioral Safety Change Management.jpeg",
         description: "Implementation of behavior-based safety programs to improve workplace compliance and risk management through cultural transformation and employee engagement.",
- 
+        duration: "Unlimited",
         price: "Contact for Quote",
         category: "Safety",
         details: [
@@ -111,7 +110,7 @@ const services = [
         title: "Climate & Environmental Consultancy",
         image: "images/hero/environmental.jpeg",
         description: "Expert guidance on sustainability practices, climate resilience strategies, and environmental best practices for organizations committed to environmental responsibility.",
-
+        duration: "Unlimited",
         price: "Contact for Quote",
         category: "Environmental",
         details: [
@@ -126,7 +125,7 @@ const services = [
         title: "ISO Systems Audit & Procedures",
         image: "images/hero/ISO Systems Audit & Procedures.jpeg",
         description: "Professional ISO compliance audits and development of structured workplace procedures for improved operational efficiency and safety compliance.",
-   
+        duration: "Unlimited",
         price: "Contact for Quote",
         category: "Certification",
         details: [
@@ -141,7 +140,7 @@ const services = [
         title: "Mining Operations Safety",
         image: "images/hero/Mining Operations Safety.jpeg",
         description: "Implementation of comprehensive health, safety, and environmental best practices in mine sites, including safety programs and compliance audits.",
-
+        duration: "Unlimited",
         price: "Contact for Quote",
         category: "Mining",
         details: [
@@ -156,7 +155,7 @@ const services = [
         title: "Mine Planning & Rehabilitation",
         image: "images/hero/Mine Planning & Rehabilitation.jpeg",
         description: "Development of sustainable mine planning strategies and comprehensive rehabilitation plans for effective post-mining site management and ecological restoration.",
- 
+        duration: "Unlimited",
         price: "Contact for Quote",
         category: "Mining",
         details: [
@@ -171,6 +170,7 @@ const services = [
         title: "Safety Curriculum Development",
         image: "images/hero/Safety Curriculum Development.jpeg",
         description: "Design of comprehensive OHS and road safety training programs, emphasizing life-saving measures, accident prevention, and professional development.",
+        duration: "Unlimited",
         price: "Contact for Quote",
         category: "Road Safety",
         details: [
