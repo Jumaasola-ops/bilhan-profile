@@ -87,7 +87,7 @@ body {
 .hero {
     height: 100vh;
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-                url('images/hero/hero.jpeg') center/cover;
+                url('../images/hero/hero.jpeg') center/cover;
     display: flex;
     align-items: center;
     text-align: center;
@@ -558,19 +558,19 @@ body {
 }
 
 .about-hero {
-    background-image: url('images/hero/about.jpeg');
+    background-image: url('../images/hero/about.jpeg');
 }
 
 .services-hero {
-    background-image: url('images/hero/proffesional driving.jpeg');
+    background-image: url('../images/hero/professional-driving.jpeg');
 }
 
 .gallery-hero {
-    background-image: url('images/hero/Best Driving Courses in Calgary.jpeg');
+    background-image: url('../images/hero/Best Driving Courses in Calgary.jpeg');
 }
 
 .contact-hero {
-    background-image: url('images/hero/Behavioral Safety Change Management.jpeg');
+    background-image: url('../images/hero/Behavioral Safety Change Management.jpeg');
 }
 
 /* Gallery Styles */

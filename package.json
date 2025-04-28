@@ -12,6 +12,7 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
-    "bilhanprofile": "file:"
+    "bilhanprofile": "file:",
+    "express": "^4.21.2"
   }
 }
